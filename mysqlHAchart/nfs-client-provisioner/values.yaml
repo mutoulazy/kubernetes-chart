@@ -3,7 +3,7 @@ global:
 
 nfs:
   provisionerimage: registry.cn-hangzhou.aliyuncs.com/open-ali/nfs-client-provisioner:latest
-  ip: 172.17.81.66
+  ip: 127.0.0.1
   backuppath: /data/provisioner
   storage: 1Gi
   
