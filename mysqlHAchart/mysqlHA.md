@@ -26,7 +26,7 @@
     </tr>
     <tr>
         <td>nfs.ip</td>
-        <td>172.17.81.66</td>
+        <td>127.0.0.1</td>
         <td>nfs 服务IP地址</td>
         <td>必填</td>
     </tr>
@@ -174,7 +174,7 @@ helm install --name mysqlhatest --namespace default mysqlha/
 ### 3.1 mysqlHA集群的组成
 
 ```
-[root@172-17-81-37 mysqlHAchart]# kubectl get pod -n default
+[root@mysqlHAchart]# kubectl get pod -n default
 NAME                               READY     STATUS    RESTARTS   AGE
 mysqlhatest-mysqlha-0              2/2       Running   0          2h
 mysqlhatest-mysqlha-1              2/2       Running   0          2h
@@ -189,17 +189,17 @@ nfs-provisioner-65987f5487-nvnbq   1/1       Running   0          1d
 由于使用了nfs做动态PV的原因，所以该集群的备份文件都存在于nfs服务器对应的目录下
 
 ```
-[root@172-17-81-66 provisioner]# pwd
+[root@provisioner]# pwd
 /data/provisioner
 You have new mail in /var/spool/mail/root
-[root@172-17-81-66 provisioner]# ll
+[root@provisioner]# ll
 total 0
 drwxrwxrwx 2 root root  6 Nov 13 13:52 archived-default-test-claim1-pvc-a9f9037c-e704-11e8-bd73-fa163eba06fa
 drwxrwxrwx 3 root root 19 Nov 13 14:10 default-data-mysqlhatest-mysqlha-0-pvc-99aba44f-e705-11e8-bd73-fa163eba06fa
 drwxrwxrwx 3 root root 19 Nov 13 14:11 default-data-mysqlhatest-mysqlha-1-pvc-f22c62b8-e70a-11e8-bd73-fa163eba06fa
 drwxrwxrwx 3 root root 19 Nov 13 14:12 default-data-mysqlhatest-mysqlha-2-pvc-1c3b4b5f-e70b-11e8-bd73-fa163eba06fa
 drwxrwxrwx 2 root root  6 Nov 13 14:01 default-test-claim1-pvc-88ac7263-e709-11e8-bd73-fa163eba06fa
-[root@172-17-81-66 provisioner]# 
+[root@provisioner]# 
 ```
 
 ### 3.3 备份与还原
